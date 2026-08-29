@@ -21,3 +21,22 @@ jobs:
       - name: Run test
         run: npm test
 
+  Deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v5
+
+      - name: Install NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: deploy
+        run: echo "Deploying"
+
