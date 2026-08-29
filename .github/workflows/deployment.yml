@@ -1,22 +1,23 @@
 name: Deployment Project
+
 on: push
+
 jobs:
-    test:
-        run-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Get Code
-              uses: actions/checkout@v5
-            - name: install NodeJS
-              uses: actions/setup-node@v5
-              with:
-                node-version: 20
-            
-                - name: install dependencies
-                  run: npm ci
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v5
 
-                - name: Run test
-                  run: npm test
+      - name: Install NodeJS
+        uses: actions/setup-node@v5
+        with:
+          node-version: 20
 
-    
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run test
+        run: npm test
 
