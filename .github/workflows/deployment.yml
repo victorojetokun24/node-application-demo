@@ -1,38 +1,22 @@
 name: Deployment Project
 on: push
-
 jobs:
     test:
         run-on: ubuntu-latest
 
         steps:
             - name: Get Code
-              uses: action/checkout@v5
-
+              uses: actions/checkout@v5
             - name: install NodeJS
               uses: actions/setup-node@v5
               with:
                 node-version: 20
             
-            - name: install dependencies
-              run: npm ci
+                - name: install dependencies
+                  run: npm ci
 
-    deploy:
-        need: test
-        run-on: ubuntu-latest
+                - name: Run test
+                  run: npm test
 
-        steps:
-            - name: Get Code
-              uses: action/checkout@v5
-
-            - name: install NodeJS
-              uses: actions/setup-node@v5
-              with:
-                node-version: 20
-            
-            - name: install dependencies
-              run: npm ci
-
-            - name: deploy
-              run: echo "Deployment in progress"
+    
 
